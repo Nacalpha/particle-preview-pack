@@ -1,0 +1,39 @@
+{
+	"format_version": 2,
+	"header": {
+		"name": "Particle Preview bp",
+		"description": "Modified by Nacalpha",
+		"uuid": "e3978024-3993-4c14-a738-ff5bcd0796e2",
+		"version": [
+			1,
+			0,
+			0
+		],
+		"min_engine_version": [
+			1,
+			19,
+			80
+		]
+	},
+	"modules": [
+		{
+			"type": "data",
+			"uuid": "7b9d7b91-f605-4c23-99fc-ce7c66231bbf",
+			"version": [
+				1,
+				0,
+				0
+			]
+		}
+	],
+	"dependencies": [
+		{
+			"uuid": "08599b8a-b584-4a19-b2bc-6e0befcc10d8",
+			"version": [
+				1,
+				0,
+				0
+			]
+		}
+	]
+}

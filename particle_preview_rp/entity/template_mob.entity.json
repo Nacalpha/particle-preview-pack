@@ -1,0 +1,70 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "ck:template_mob",
+            "textures": {
+                "default": "textures/entity/template_mob"
+            },
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "geometry": {
+                "default": "geometry.template_mob"
+            },
+            "render_controllers": [
+                "controller.render.default"
+            ],
+			"spawn_egg": {
+				"base_color": "#1f28a0",
+				"overlay_color": "#a33415"
+			},
+			"scripts": {
+				"animate": [
+					"particle1","particle2","particle3","particle4",
+
+					{"spin": "q.variant == 2"}
+				]
+			},
+			"particle_effects": {
+				// loop every 2 seconds
+				"particle1_1": "particle1_1",
+				// "particle1_2": "particle1_1",
+				// "particle1_3": "particle1_1",
+				// "particle1_4": "particle1_1",
+				// "particle1_5": "particle1_1",
+				// "particle1_6": "particle1_1",
+
+				// loop every 5 seconds
+				"particle2_1": "particle2_1",
+				// "particle2_2": "particle2_1",
+				// "particle2_3": "particle2_1",
+				// "particle2_4": "particle2_1",
+				// "particle2_5": "particle2_1",
+
+				// loop every 10 seconds
+				"particle3_1": "particle3_1",
+				// "particle3_2": "particle3_1",
+				// "particle3_3": "particle3_1",
+				// "particle3_4": "particle3_1",
+				// "particle3_5": "particle3_1",
+
+				// loop every 20 seconds
+				"particle4_1": "particle4_1"
+				// "particle4_2": "particle4_1",
+				// "particle4_3": "particle4_1",
+				// "particle4_4": "particle4_1",
+				// "particle4_5": "particle4_1"
+
+			},
+			"animations": {
+			    "particle1": "animation.template_mob.particle1",
+				"particle2": "animation.template_mob.particle2",
+				"particle3": "animation.template_mob.particle3",
+				"particle4": "animation.template_mob.particle4",
+
+				"spin": "animation.template_mob.spin"
+			}
+        }
+    }
+}

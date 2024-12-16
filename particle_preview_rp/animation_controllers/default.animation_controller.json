@@ -1,0 +1,154 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.default.general": {
+      "initial_state": "idle",
+      "states": {
+        "default": {
+          "on_entry": [
+            "variable.cooldown = (variable.cooldown ?? 1) + 3;"
+          ],
+          "animations": [
+            "idle"
+          ],
+          "transitions": [{
+              "idle": "query.property('ck:mob_animation') == 0"
+            }, {
+              "walk": "query.property('ck:mob_animation') == 1"
+            }, {
+              "sprint": "query.property('ck:mob_animation') == 2"
+            }, {
+              "attack_1": "query.property('ck:mob_animation') == 3 && (query.life_time > variable.cooldown)"
+            }, {
+              "attack_2": "query.property('ck:mob_animation') == 4 && (query.life_time > variable.cooldown)"
+            }, {
+              "attack_3": "query.property('ck:mob_animation') == 5 && (query.life_time > variable.cooldown)"
+            }, {
+              "death": "query.property('ck:mob_animation') == 6 && (query.life_time > variable.cooldown)"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "idle": {
+          "animations": [
+            "idle"
+          ],
+          "transitions": [{
+              "default": "query.property('ck:mob_animation') != 0"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "walk": {
+          "animations": [
+            "walk"
+          ],
+          "transitions": [{
+              "default": "query.property('ck:mob_animation') != 1"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "sprint": {
+          "animations": [
+            "sprint"
+          ],
+          "transitions": [{
+              "default": "query.property('ck:mob_animation') != 2"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "attack_1": {
+          "animations": [
+            "attack_1"
+          ],
+          "transitions": [{
+              "default": "query.any_animation_finished"
+            }
+          ],
+          "on_exit": [
+            "variable.cooldown = query.life_time;"
+          ],
+          "blend_transition": 0.2
+        },
+        "attack_2": {
+          "animations": [
+            "attack_2"
+          ],
+          "transitions": [{
+              "default": "query.any_animation_finished"
+            }
+          ],
+          "on_exit": [
+            "variable.cooldown = query.life_time;"
+          ],
+          "blend_transition": 0.2
+        },
+        "attack_3": {
+          "animations": [
+            "attack_3"
+          ],
+          "transitions": [{
+              "default": "query.any_animation_finished"
+            }
+          ],
+          "on_exit": [
+            "variable.cooldown = query.life_time;"
+          ],
+          "blend_transition": 0.2
+        },
+        "death": {
+          "animations": [
+            "death"
+          ],
+          "transitions": [{
+              "default": "query.any_animation_finished"
+            }
+          ],
+          "on_exit": [
+            "variable.cooldown = query.life_time;"
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    },
+    "controller.animation.template_rpctrl": {
+			"states": {
+				"default": {
+					"animations": ["idle"],
+					"transitions": [
+						{"death": "q.is_tamed"},
+						{"attack": "q.is_delayed_attacking"},
+						{"move": "q.ground_speed > 0.2"}
+					],
+					"blend_transition": 0.2,
+					"blend_via_shortest_path": true
+				},
+				"move": {
+					"animations": ["walk"],
+					"transitions": [
+						{"death": "q.is_tamed"},
+						{"attack": "q.is_delayed_attacking"},
+						{"default": "q.ground_speed <= 0.1"}
+					],
+					"blend_transition": 0.2,
+					"blend_via_shortest_path": true
+				},
+				"attack": {
+					"animations": ["attack_1"],
+					"transitions": [
+						{"death": "q.is_tamed"},
+						{"default": "q.any_animation_finished"}
+					],
+					"blend_transition": 0.2
+				},
+				"death": {
+					"animations": [
+						"death"
+					]
+				}
+			}
+		}
+  }
+}

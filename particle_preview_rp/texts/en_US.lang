@@ -1,0 +1,6 @@
+
+pack.name=Particle Preview Pack
+pack.description=Modified by Nacalpha
+
+entity.ck:template_mob.name=Template Mob
+item.spawn_egg.entity.ck:template_mob.name=Template Mob
